@@ -4,7 +4,7 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 function average1(numbers){
   const sum = numbers.reduce((acc, curr) => acc + curr, 0);
-  return sum / length
+  return sum / numbers.length
 }
 
 const average2 = (numbers) => {
