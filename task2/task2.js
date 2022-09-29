@@ -8,12 +8,11 @@ const joinWords = (arr) => arr.join(" ");
 const joinWordsWithDashes = (arr) => arr.join("-");
 
 /* problem 3 */
-const joinEvenNumbers2 = (numbers) => {
+const joinEvenNumbers = (numbers) => {
   return numbers.map((n, i) =>
     n % 2 === 0 && numbers[i+1] % 2 === 0 ? `${n}-`: n).join("");
 }
 
 console.log(joinWords(myArray));
 console.log(joinWordsWithDashes(myArray));
-console.log(joinEvenNumbers2(numbers))
-
+console.log(joinEvenNumbers(numbers))
