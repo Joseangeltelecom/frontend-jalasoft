@@ -1,0 +1,65 @@
+/* Grid 1 */
+.grid{
+    display: grid; 
+    grid-template-rows: 70px 200px;
+    background-color: rgb(222, 222, 222);
+  }
+
+/* HEADER */
+.grid > .innerGrid1{
+    display: flex;
+    background-color: #3C0A92;
+    justify-content: center;
+    align-items: center;
+  }
+
+/* HERO */
+.grid > .innerGrid2{
+    background-color: rgb(43, 177, 226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Grid 2 */
+  .grid2{
+    display: grid; 
+    grid-template-columns: 25% 75%;
+     grid-auto-rows: 470px; 
+    background-color: rgb(243, 246, 247);
+  }
+  
+
+  /* MENU */
+  .grid2 > .innerGrid1{
+    grid-column: 1/2;
+    background-color: rgb(165, 78, 81);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ /* MAIN */
+  .grid3 > .innerGrid1{
+    background-color: rgb(59, 64, 103);
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+ /* BANNER  */
+  .grid3 > .innerGrid2{
+    background-color: rgb(209, 212, 134);
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* EMPTY ELEMENT */
+  .grid3 > .innerGrid3{
+    background-color: rgb(121, 241, 121);
+    height: 20%;
+    width: 65%;    
+  }
