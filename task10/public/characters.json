@@ -1,0 +1,84 @@
+[
+  {
+    "id": 1,
+    "name": "Gohan",
+    "image": "https://media.giphy.com/media/6BXC2QXk4utJm/giphy.gif",
+    "description": "Hijo de Goku"
+  },
+
+  {
+    "id": 2,
+    "name": "Vegueta",
+    "image": "https://media.giphy.com/media/pz1s2IpdQh86k/giphy.gif",
+    "description": "Es el hijo mayor del rey Vegeta III"
+  },
+
+  {
+    "id": 3,
+    "name": "Bardock",
+    "image": "https://media.giphy.com/media/OVEWsTzreTj2M/giphy.gif",
+    "description": "Papa de Goku"
+  },
+
+  {
+    "id": 4,
+    "name": "Veguetto",
+    "image": "https://media.giphy.com/media/12wsnLPJcC6o92/giphy.gif",
+    "description": "Fusión de Goku y Vegueta"
+  },
+
+  {
+    "id": 5,
+    "name": "Goku",
+    "image": "https://media.giphy.com/media/dieGgjBPDS9jy/giphy.gif",
+    "description": "Salvador del Mundo"
+  },
+  {
+    "id": 6,
+    "name": "Majin Boo",
+    "image": "https://media.giphy.com/media/yIl6tNlJRS3OcOOh03/giphy.gif",
+    "description": "es la encarnación que tomó Pequeño Boo como resultado de absorber al Gran Kaio-shin del Universo 7 hace más de 5 millones de años, volviéndolo un ser inocente y más débil"
+  },
+
+  {
+    "id": 7,
+    "name": "Tenshinhan",
+    "image": "https://media.giphy.com/media/EzrGcye9OAbVkDXuyF/giphy.gif",
+    "description": "Ten Shinhan es un luchador terrícola humano de artes marciales descendiente de un clan alienígena"
+  },
+
+  {
+    "id": 8,
+    "name": "Cell",
+    "image": "https://media.giphy.com/media/EzxsmkHR24mTS/giphy.gif",
+    "description": " es un bioandroide creado por la computadora del Dr. Gero, Está fabricado a partir de células de Goku, Piccolo, Vegeta, Freeza y su padre el Gran Rey Kold"
+  },
+
+  {
+    "id": 9,
+    "name": "Mr.Satán",
+    "image": "https://media.giphy.com/media/xQoVBf3q0JEHs1CAtB/giphy.gif",
+    "description": "Es el ganador de la edición Nº24 del Torneo Mundial de las Artes Marciales de la Tierra, y es el suegro de Son Gohan, el padre de Videl, y el abuelo de Pan"
+  },
+
+  {
+    "id": 10,
+    "name": "Freezer",
+    "image": "https://media.giphy.com/media/5ewkIzbxKMadO/giphy.gif",
+    "description": "Es un alienígena mutante, brutal dictador y líder del Imperio Galáctico del Universo 7"
+  },
+
+  {
+    "id": 11,
+    "name": "Trunks",
+    "image": "https://media.giphy.com/media/XVq3bOamqeRlC/giphy.gif",
+    "description": "es un mestizo entre humano terrícola y Saiyan nacido en la Tierra, e hijo de Bulma y Vegeta, el cual es introducido en el Arco de los Androides y Cell"
+  },
+
+  {
+    "id": 12,
+    "name": "Goten",
+    "image": "https://media.giphy.com/media/w6JyQiYum7Qbu/giphy.gif",
+    "description": "es el segundo hijo de Chi-Chi y Son Goku, y hermano menor de Son Gohan, que nació al poco tiempo de la segunda muerte de su padre"
+  }
+]

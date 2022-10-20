@@ -1,0 +1,48 @@
+
+.App{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #fff;
+  border: 5px solid #fff;
+  border-radius: 20px;
+  margin: 40px 40px;
+  position: relative;
+  height: 300px;
+  width: 300px;
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  transition: box-shadow 0.1s ease-in-out;
+  padding: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 12px 24px #999, 0 12px 24px #999;
+}
+
+.card > .img-container {
+  overflow: hidden;
+  text-align: center;
+}
+
+
+
+.card > .img-container > img {
+  width: 60%;
+}
+
+.card > .img-content > ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .card:hover {
+    height: 300px;
+    width: 250px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+}
