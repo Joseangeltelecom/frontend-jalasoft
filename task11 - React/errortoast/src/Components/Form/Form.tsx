@@ -13,13 +13,9 @@ const uniqueId = () => Math.floor(Math.random() * Date.now());
 
 export default function Form() {
   const dispatch = useAppDispatch();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
 
-  const handleError = () => {
+  const handleError = (errors: any) => {
     if (errors.productName) {
       const productNameId = uniqueId();
       dispatch(
@@ -46,7 +42,7 @@ export default function Form() {
   const onSubmit: SubmitHandler<Inputs> = (data) => {};
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit, handleError)}>
       <>
         <input
           placeholder="productName"
@@ -71,7 +67,7 @@ export default function Form() {
             },
           })}
         />
-        <button onClick={handleError}>Submit</button>
+        <button>Submit</button>
       </>
     </form>
   );

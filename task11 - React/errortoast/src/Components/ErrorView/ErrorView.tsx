@@ -5,7 +5,6 @@ import "./ErrorView.css";
 const ErrorView = () => {
   const { error } = useAppSelector((state) => state.error);
   const dispatch = useAppDispatch();
-  console.log(error);
 
   return (
     <div>
