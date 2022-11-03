@@ -1,0 +1,9 @@
+.card{
+    background-color: aquamarine;
+    border-radius: 5%;
+    min-width: 300px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

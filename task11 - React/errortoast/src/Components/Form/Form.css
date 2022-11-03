@@ -1,0 +1,21 @@
+form {
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    position: fixed;
+    top: 30px;
+    left: 500px;
+    background-color: rgb(15, 171, 206);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: aliceblue;
+    padding: 0px 10px;
+}

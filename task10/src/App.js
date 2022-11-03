@@ -37,17 +37,17 @@ function App() {
   );
 
   const style = {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    // position: "fixed",
+    // top: "50%",
+    // left: "50%",
+    // transform: "translate(-50%, -50%)",
   };
 
   return (
     <div className="App">
       <>
         {isLoading ? (
-          <div style={style}>
+          <div className="spinnerContainer" style={style}>
             <LoadingSpinner />
           </div>
         ) : (

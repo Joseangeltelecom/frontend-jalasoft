@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .card {
@@ -23,11 +24,11 @@
   box-shadow: 0 12px 24px #999, 0 12px 24px #999;
 }
 
+
 .card > .img-container {
   overflow: hidden;
   text-align: center;
 }
-
 
 
 .card > .img-container > img {
@@ -37,6 +38,13 @@
 .card > .img-content > ul {
   list-style-type: none;
   padding: 0;
+}
+
+.spinnerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
 }
 
 @media only screen and (max-width: 600px) {
