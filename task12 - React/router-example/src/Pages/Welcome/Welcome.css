@@ -1,0 +1,26 @@
+.DashboardContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: bisque;
+}
+
+.title{
+    font-size: 50px;
+    font-family: sans-serif;
+    color: rgb(6, 20, 108);
+}
+
+button {
+    padding: 15px 20px;
+    border-radius: 20px;
+    border: none;
+    color: rgb(6, 20, 108);
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: azure;
+}
