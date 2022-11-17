@@ -11,30 +11,46 @@ const CommentList = ({ comment, handleDelete, handleUpdate }) => {
 
   const handleUpdateComment = async () => {
     const { value: formValues } = await Swal.fire({
-      title: "Multiple inputs",
+      title: "Update your title or comment",
       html:
-        `<input placeholder="name" id="swal-input1" class="swal2-input" value=${comment.name}>` +
-        `<input placeholder="body" id="swal-input2" class="swal2-input" value=${comment.body}>`,
+        `<input placeholder="Title" id="swal-input1" class="swal2-input" value=${comment.name}>` +
+        `<input placeholder="comment" id="swal-input2" class="swal2-input" value=${comment.body}>`,
       focusConfirm: false,
       preConfirm: () => {
-        return [
-          document.getElementById("swal-input1").value,
-          document.getElementById("swal-input2").value,
-        ];
+        const value1 = document.getElementById("swal-input1").value;
+        const value2 = document.getElementById("swal-input2").value;
+
+        if (value1 && value2) {
+          return [value1, value2];
+        } else {
+          Swal.showValidationMessage("one input is missing");
+        }
       },
     });
 
-    console.log(formValues);
-
-    handleUpdate(comment.id, formValues);
+    if (formValues) {
+      Swal.fire(JSON.stringify(formValues));
+    }
+    if (formValues[0] != "" && formValues[1] != "") {
+      handleUpdate(comment.id, formValues);
+    } else {
+      Swal.fire("Please fill all fields");
+    }
   };
 
   return (
     <Card>
       <CardBlock1>
         <ButtonsContainer>
-          <Button onClick={() => handleDelete(comment.id)}>Delete</Button>
-          <Button onClick={handleUpdateComment}>update</Button>
+          <Button
+            data-testid="deleteButton"
+            onClick={() => handleDelete(comment.id)}
+          >
+            Delete
+          </Button>
+          <Button data-testid="updateButton" onClick={handleUpdateComment}>
+            update
+          </Button>
         </ButtonsContainer>
         <CommentName>{comment?.name}</CommentName>
         <CommentBody onClick={handleCommentDetailsRedirection}>

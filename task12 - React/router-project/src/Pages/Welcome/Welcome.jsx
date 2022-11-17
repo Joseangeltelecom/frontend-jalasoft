@@ -7,7 +7,10 @@ const Welcome = () => {
   return (
     <WelcomeContainer>
       <Title>Welcome</Title>
-      <Button onClick={() => navigate("/dashboard/comments")}>
+      <Button
+        data-testid="welcomeButton"
+        onClick={() => navigate("/dashboard/comments")}
+      >
         Go to DashBoard
       </Button>
     </WelcomeContainer>

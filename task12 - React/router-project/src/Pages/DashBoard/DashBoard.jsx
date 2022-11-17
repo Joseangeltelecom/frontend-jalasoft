@@ -7,24 +7,24 @@ import LoadingSpinner from "../../hooks/LoadingSpinner";
 import CommentList from "./CommentList";
 
 const uniqueId = () => Math.floor(Math.random() * Date.now());
+let currentPage;
+export const url = `https://jsonplaceholder.typicode.com/comments?_start=${(currentPage = 0)}&_limit=4`;
 
 const DashBoard = () => {
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState(99);
 
   useEffect(() => {
-    const getComments = async (currentPage) => {
+    const getComments = async (currentPage = 0) => {
       try {
         setLoading(true);
         let paramsObject = {
           page: currentPage,
         };
-        const response = await axios.get(
-          `https://jsonplaceholder.typicode.com/comments?_start=${currentPage}&_limit=4`,
-          { params: paramsObject }
-        );
+        const response = await axios.get(url, { params: paramsObject });
         setLoading(false);
         setComments(response.data);
         setPageCount(
@@ -34,6 +34,7 @@ const DashBoard = () => {
         );
       } catch (error) {
         console.log(error.message);
+        setError(error.message);
       }
     };
 
@@ -108,18 +109,23 @@ const DashBoard = () => {
 
   const handleCreate = async () => {
     const { value: formValues } = await Swal.fire({
-      title: "Multiple inputs",
+      title: "Insert a title, comment and email address",
       html:
-        `<input placeholder="name" id="swal-input1" class="swal2-input">` +
-        `<input placeholder="body" id="swal-input2" class="swal2-input">` +
-        `<input placeholder="email" id="swal-input3" class="swal2-input">`,
+        `<input placeholder="Title" data-testid="modal" id="swal-input1" class="swal2-input">` +
+        `<input placeholder="comment" data-testid="modal" id="swal-input2" class="swal2-input">` +
+        `<input placeholder="email"data-testid="modal" id="swal-input3" class="swal2-input">`,
       focusConfirm: false,
+
       preConfirm: () => {
-        return [
-          document.getElementById("swal-input1").value,
-          document.getElementById("swal-input2").value,
-          document.getElementById("swal-input3").value,
-        ];
+        const value1 = document.getElementById("swal-input1").value;
+        const value2 = document.getElementById("swal-input2").value;
+        const value3 = document.getElementById("swal-input3").value;
+
+        if (value1 && value2 && value3) {
+          return [value1, value2, value3];
+        } else {
+          Swal.showValidationMessage("one input is missing");
+        }
       },
     });
 
@@ -143,7 +149,8 @@ const DashBoard = () => {
       },
     })
       .then((response) => response.json())
-      .then((json) =>
+      .then((json) => Swal.fire(JSON.stringify(formValues)))
+      .then(() =>
         Swal.fire("Good job!", "Your comment has been added", "success")
       );
   };
@@ -151,21 +158,32 @@ const DashBoard = () => {
   return (
     <CommentListContainer>
       {loading && comments?.length === 0 && (
-        <SpinnerContainer>
+        <SpinnerContainer data-testid="loading">
           <LoadingSpinner />
         </SpinnerContainer>
       )}
-      {<CreateButton onClick={handleCreate}>Add new Comment</CreateButton>}
+      {
+        <CreateButton data-testid="addButton" onClick={handleCreate}>
+          Add new Comment
+        </CreateButton>
+      }
       {!loading &&
         !!comments?.length &&
         comments.map((comment) => (
-          <CommentList
-            key={comment.id}
-            comment={comment}
-            handleDelete={handleDelete}
-            handleUpdate={handleUpdate}
-          />
+          <div data-testid="resolved">
+            <CommentList
+              key={comment.id}
+              comment={comment}
+              handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
+            />
+          </div>
         ))}
+      {error && (
+        <p data-testid="alert" role="alert">
+          Oops, failed to fetch
+        </p>
+      )}
       {!loading && !!comments?.length && (
         <Pagination
           currentPage={currentPage}
@@ -174,7 +192,7 @@ const DashBoard = () => {
         />
       )}
       {!loading && (comments?.length === 0 || !comments) && (
-        <div>No Jobs available for this criteria!!!</div>
+        <div>No Comments available!</div>
       )}
     </CommentListContainer>
   );
