@@ -13,8 +13,8 @@ const CommentList = ({ comment, handleDelete, handleUpdate }) => {
     const { value: formValues } = await Swal.fire({
       title: "Update your title or comment",
       html:
-        `<input placeholder="Title" id="swal-input1" class="swal2-input" value=${comment.name}>` +
-        `<input placeholder="comment" id="swal-input2" class="swal2-input" value=${comment.body}>`,
+        `<input placeholder="Title" id="swal-input1" data-testid="modalUpdate" class="swal2-input" value=${comment?.name}>` +
+        `<input placeholder="comment" id="swal-input2" data-testid="modalUpdate" class="swal2-input" value=${comment?.body}>`,
       focusConfirm: false,
       preConfirm: () => {
         const value1 = document.getElementById("swal-input1").value;

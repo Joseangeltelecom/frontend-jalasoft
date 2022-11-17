@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 import { BrowserRouter as Router } from "react-router-dom";
 import { url } from "../Pages/DashBoard/DashBoard";
-import { render } from "../Utils/test-utils";
+import { fireEvent, render, screen, waitFor } from "../Utils/test-utils";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import "@testing-library/jest-dom";
@@ -39,7 +39,7 @@ test("Display delete button", async () => {
   expect(deleteButton).toBeInTheDocument();
 });
 
-test("Display update button", async () => {
+test("Display update button and show update Modal on click", async () => {
   const { getByTestId } = render(
     <Router>
       <CommentList />
@@ -47,4 +47,6 @@ test("Display update button", async () => {
   );
   const updateButton = getByTestId("updateButton");
   expect(updateButton).toBeInTheDocument();
+  fireEvent.click(updateButton);
+  await waitFor(() => screen.getAllByTestId("modalUpdate"));
 });
