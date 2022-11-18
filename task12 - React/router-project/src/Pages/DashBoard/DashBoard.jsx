@@ -1,4 +1,5 @@
 import axios from "axios";
+import fetch from "cross-fetch";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Swal from "sweetalert2";
@@ -42,16 +43,25 @@ const DashBoard = () => {
   }, [currentPage]);
 
   const handleDelete = (id) => {
-    fetch(`https://jsonplaceholder.typicode.com/comments${id}`, {
+    fetch(`https://jsonplaceholder.typicode.com/comments/${id}`, {
       method: "DELETE",
     })
-      .then((response) => response.json())
-      .then((json) => {
+      .then((response) => {
+        if (!response.ok) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: `<a href="">${response.status}</a>`,
+          });
+        }
         Swal.fire(
           "Good job!",
-          "Your comment has been deleted Successfully!",
+          `Your comment has been deleted Successfully! ${response.status}`,
           "success"
         );
+
+        return response.json();
       })
       .catch((error) => {
         Swal.fire({
@@ -69,7 +79,7 @@ const DashBoard = () => {
     if (newComment) {
       const name = newComment[0];
       const body = newComment[1];
-      fetch(`https://jsonplaceholder.typicode.com/comments${id}`, {
+      fetch(`https://jsonplaceholder.typicode.com/comments/${id}`, {
         method: "PATCH",
         body: JSON.stringify({
           name: name,
@@ -79,13 +89,22 @@ const DashBoard = () => {
           "Content-type": "application/json; charset=UTF-8",
         },
       })
-        .then((response) => response.json())
-        .then((json) => {
+        .then((response) => {
+          if (!response.ok) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+              footer: `<a href="">${response.status}</a>`,
+            });
+          }
           Swal.fire(
             "Good job!",
-            "Your comment has been updated Successfully!",
+            `Your comment has been updated Successfully! ${response.status}`,
             "success"
           );
+
+          return response.json();
         })
         .catch((error) => {
           Swal.fire({
@@ -111,9 +130,9 @@ const DashBoard = () => {
     const { value: formValues } = await Swal.fire({
       title: "Insert a title, comment and email address",
       html:
-        `<input placeholder="Title" data-testid="modal" id="swal-input1" class="swal2-input">` +
-        `<input placeholder="comment" data-testid="modal" id="swal-input2" class="swal2-input">` +
-        `<input placeholder="email"data-testid="modal" id="swal-input3" class="swal2-input">`,
+        `<input placeholder="Title" data-testid="input-title" id="swal-input1" class="swal2-input">` +
+        `<input placeholder="comment" data-testid="input-comment" id="swal-input2" class="swal2-input">` +
+        `<input placeholder="email"data-testid="input-email" id="swal-input3" class="swal2-input">`,
       focusConfirm: false,
 
       preConfirm: () => {
@@ -128,6 +147,10 @@ const DashBoard = () => {
         }
       },
     });
+
+    if (formValues) {
+      Swal.fire(JSON.stringify(formValues));
+    }
 
     const newData = {
       name: formValues[0],
@@ -148,11 +171,31 @@ const DashBoard = () => {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
-      .then((response) => response.json())
-      .then((json) => Swal.fire(JSON.stringify(formValues)))
-      .then(() =>
-        Swal.fire("Good job!", "Your comment has been added", "success")
-      );
+      .then((response) => {
+        if (!response.ok) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: `<a href="">${response.status}</a>`,
+          });
+        }
+        Swal.fire(
+          "Good job!",
+          `Your comment has been deleted Successfully! ${response.status}`,
+          "success"
+        );
+
+        return response.json();
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: `<a href="">${error.message}</a>`,
+        });
+      });
   };
 
   return (

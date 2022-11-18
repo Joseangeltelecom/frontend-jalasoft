@@ -31,11 +31,8 @@ const CommentList = ({ comment, handleDelete, handleUpdate }) => {
     if (formValues) {
       Swal.fire(JSON.stringify(formValues));
     }
-    if (formValues[0] != "" && formValues[1] != "") {
-      handleUpdate(comment.id, formValues);
-    } else {
-      Swal.fire("Please fill all fields");
-    }
+
+    handleUpdate(comment.id, formValues);
   };
 
   return (
@@ -43,8 +40,8 @@ const CommentList = ({ comment, handleDelete, handleUpdate }) => {
       <CardBlock1>
         <ButtonsContainer>
           <Button
-            data-testid="deleteButton"
-            onClick={() => handleDelete(comment.id)}
+            data-testid={`deleteButton-${comment?.id}`}
+            onClick={() => handleDelete(comment?.id)}
           >
             Delete
           </Button>
